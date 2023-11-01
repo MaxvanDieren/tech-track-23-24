@@ -17,7 +17,7 @@ fetch("https://www.balldontlie.io/api/v1/season_averages?seasons=2016&player_ids
 
 
 
-//fetch met ordening data werkt niet
+//fetch met ordening data werkt wel?
 function getData() {
 	fetch('https://www.balldontlie.io/api/v1/teams')
 	.then(res => res.json())
