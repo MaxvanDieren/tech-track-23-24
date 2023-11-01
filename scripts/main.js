@@ -77,7 +77,7 @@ function searchValue(e) {
 		d3.select("#team")
 		  .text("Team: "+ playa[0].team)
 
-		
+			//https://www.balldontlie.io/api/v1/season_averages?seasons[]=2018&seasons[]=2015&player_ids[]=237 goede fetch
 		  fetch("https://www.balldontlie.io/api/v1/season_averages?seasons=2020&player_ids[]="+playa[0].ID)
 		  .then(res => res.json())
 		  .then(data =>
@@ -93,28 +93,32 @@ function searchValue(e) {
 						  fgm: item["fgm"],
 
 					  }
+
+					  [
+						{score: "ast",
+						value: 4.4}
+					  ]//array verwacht niet 1 obj, maak meerdere a zemmel
 					  return newItem2
 				  });
 				  console.log(s20Avereges);
 
-				  const w = 500;
-				  const h = 500;
+				  var w = 500;
+				  var h = 500;
 
 				  const svg = d3.select("#stats")
 				  				.append("svg")
 								.attr("witdh", w)
 								.attr("height", h)
 				  			 svg.selectAll("circle")
-				  				.data(s20Avereges)
+				  				.data(s20Avereges)//er wordt maar 1 circle aangemaakt
 								.enter()
 								.append("circle")
-								.attr("x", (d,i)=> {
-									return i * 30 
-								}) 
-								.attr("cx", 200)
-								.attr("cy", 200)
-								.attr("r",10);
+								.attr("x", (d,i)=>  i * 3) 
+								.attr("cx", 100)
+								.attr("cy", 100)
+								.attr("r",5);
 
+//vincent codepen force
 			  });
 
 	});
