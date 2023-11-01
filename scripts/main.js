@@ -93,14 +93,9 @@ function searchValue(e) {
 						  fgm: item["fgm"],
 
 					  }
-
-					  [
-						{score: "ast",
-						value: 4.4}
-					  ]//array verwacht niet 1 obj, maak meerdere a zemmel
 					  return newItem2
 				  });
-				  console.log(s20Avereges);
+				  console.log(s20Avereges,"yo");
 
 				  var w = 500;
 				  var h = 500;
@@ -110,7 +105,7 @@ function searchValue(e) {
 								.attr("witdh", w)
 								.attr("height", h)
 				  			 svg.selectAll("circle")
-				  				.data(s20Avereges)//er wordt maar 1 circle aangemaakt
+				  				.data(s20Avereges)
 								.enter()
 								.append("circle")
 								.attr("x", (d,i)=>  i * 3) 
