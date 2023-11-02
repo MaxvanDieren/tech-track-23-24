@@ -95,7 +95,7 @@ function searchValue(e) {
 				// 	  return newItem2
 				//   });
 
-				// Assume the data contains an array of player statistics
+				
 					const s20Avereges = data.data.map(item => {
 						return {
 						points: item.pts,
@@ -119,10 +119,10 @@ function searchValue(e) {
 								.attr("height", h)
 				  			 	.selectAll("circle")
 				  				.data(s20Avereges)
-								.enter()
-								.append("circle")
-							 	.attr("cx", (d,i)=>  i * 3) 
-								.attr("cy", (d, i) => i*3 + 10)
+								.join("circle")
+								
+							 	.attr("cx", (d,i)=>  i * 30) 
+								.attr("cy", (d, i) => i*30 + 10)
 								.attr("r",5);
 							
 
