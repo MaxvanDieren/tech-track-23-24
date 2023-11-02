@@ -108,7 +108,7 @@ function searchValue(e) {
 						};
 					});
   
-				  console.log(s20Avereges);
+				  console.log("dataObject",s20Avereges[0]);
 
 				  var w = 500;
 				  var h = 500;
