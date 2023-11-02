@@ -81,37 +81,50 @@ function searchValue(e) {
 		  fetch("https://www.balldontlie.io/api/v1/season_averages?seasons=2020&player_ids[]="+playa[0].ID)
 		  .then(res => res.json())
 		  .then(data =>
-			  {
-				  const s20Avereges = data.data.map(item => {
-					  let newItem2 = {
-						  pts: item["pts"],
-						  stl: item["stl"],
-						  blk: item["blk"],
-						  ast: item["ast"],
-						  reb: item["reb"],
-						  fga: item["fga"],
-						  fgm: item["fgm"],
+			  { 
+				//   const s20Avereges = data.data.map(item => {
+				// 	  let newItem2 = {
+				// 		  points: item["pts"],
+				// 		  steals: item["stl"],
+				// 		  blocks: item["blk"],
+				// 		  assists: item["ast"],
+				// 		  rebounds: item["reb"],
+				// 		  fga: item["fga"],
+				// 		  fgm: item["fgm"],
+				// 	  }
+				// 	  return newItem2
+				//   });
 
-					  }
-					  return newItem2
-				  });
-				  console.log(s20Avereges,"yo");
+				// Assume the data contains an array of player statistics
+					const s20Avereges = data.data.map(item => {
+						return {
+						points: item.pts,
+						steals: item.stl,
+						blocks: item.blk,
+						assists: item.ast,
+						rebounds: item.reb,
+						fga: item.fga,
+						fgm: item.fgm,
+						};
+					});
+  
+				  console.log(s20Avereges);
 
 				  var w = 500;
 				  var h = 500;
 
 				  const svg = d3.select("#stats")
 				  				.append("svg")
-								.attr("witdh", w)
+								.attr("width", w)
 								.attr("height", h)
-				  			 svg.selectAll("circle")
+				  			 	.selectAll("circle")
 				  				.data(s20Avereges)
 								.enter()
 								.append("circle")
-								.attr("x", (d,i)=>  i * 3) 
-								.attr("cx", 100)
-								.attr("cy", 100)
+							 	.attr("cx", (d,i)=>  i * 3) 
+								.attr("cy", (d, i) => i*3 + 10)
 								.attr("r",5);
+							
 
 //vincent codepen force
 			  });
@@ -119,7 +132,7 @@ function searchValue(e) {
 	});
 	
 	
-}
+};
 
 
 
