@@ -76,6 +76,7 @@ function searchValue(e) {
 		  .text("Position: "+ playa[0].position)
 		d3.select("#team")
 		  .text("Team: "+ playa[0].team)
+		  
 
 			//https://www.balldontlie.io/api/v1/season_averages?seasons[]=2018&seasons[]=2015&player_ids[]=237 goede fetch
 		  fetch("https://www.balldontlie.io/api/v1/season_averages?seasons=2020&player_ids[]="+playa[0].ID)
@@ -113,17 +114,24 @@ function searchValue(e) {
 				  var w = 500;
 				  var h = 500;
 
+
 				  const svg = d3.select("#stats")
-				  				.append("svg")
+								.append("svg")
 								.attr("width", w)
 								.attr("height", h)
-				  			 	.selectAll("circle")
-				  				.data(s20Avereges)
-								.join("circle")
-								
-							 	.attr("cx", (d,i)=>  i * 30) 
-								.attr("cy", (d, i) => i*30 + 10)
-								.attr("r",5);
+								.selectAll("circle")
+								.data(s20Avereges)
+								.join("g")// maak groep 'g' aan voor de individuele circles
+								.selectAll("circle")
+								.data(d => {
+									console.log("Outer Data:", d);// normaal krijg ik een object met data terug
+									console.log("Inner Data:", Object.values(d)); // Use Object.values directly
+									return Object.values(d);//geef een array terug met daarin de data
+								})
+								.join("circle")//voor iedere value in de array een circle
+								.attr("cx", (d, i) => i * 30)
+								.attr("cy", (d, i) => i * 30 + 10)
+								.attr("r", 5);			
 							
 
 //vincent codepen force

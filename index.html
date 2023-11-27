@@ -7,28 +7,43 @@
     <title>Tech-track Boilerplate App</title>
   </head>
   <body>
-    <h1>PLAYER STATS!</h1>
+    <header>
+      <h1 class="neon" data-text="U">NB<span class="flicker-slow">A</span> PLA<span class="flicker-fast">Y</span>ER S<span class="flicker-slow2">TA</span>TS</h1>
+    </header>
 
-    <section>
-      <input 
-        type="text"
-        name="searchBar"
-        id="searchBar"
-        placeholder="Zoek naar een speler!"
-      />
-      <button id="search_button">Search!</button>
-    </section>
-
-    <section id="playerInfo">
-      <h1></h1>
-      <p id="position"></p>
-      <p id="team"></p>
-    </section>
-
-    <section id="stats">
+    <div class="area1">
+      <section class="dropdwn">
+        <button class="dropbtn">Welk seizoen?</button>
+        <div class="dropdwn-ct">
+          <a href="#">2020</a>
+          <a href="#">2021</a>
+          <a href="#">2022</a>
+          <a href="#">2023</a>
+        </div>
+      </section>
       
-    </section>
+      <section id="search">
+        <input 
+          type="text"
+          name="searchBar"
+          id="searchBar"
+          placeholder="Zoek naar een speler!"
+        />
+        <button id="search_button">Search!</button>
+      </section>
+    </div>  
 
+    <div class="area2">
+      <section id="playerInfo">
+        <h1></h1>
+        <p id="position"></p>
+        <p id="team"></p>
+      </section>
+
+      <section id="stats">
+        
+      </section>
+    </div>
     <script type="module" src="./scripts/main.js"></script>
   </body>
 </html>
