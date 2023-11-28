@@ -7,6 +7,8 @@ import count from './count.js';
 
 console.log('Hello, world!');
 
+
+
 var playerImg = document.querySelector(".playerImg");
 var sqrtScale;
 
@@ -120,9 +122,12 @@ function searchValue(e) {
 					// ${h / 2} - half van de totale hoogte van h voor alles in g (g als geheel)
 					.attr("transform", (d, i) => `translate(${i * 50},  ${h / 2})`)
 					.append("circle")
+					.attr("class", "basketballs")
 					.attr("cx", 0)
 					.attr("cy", 0)
 					.attr("r", d => sqrtScale(d));
+
+
 			})
 			.catch(error => console.error("Error fetching data:", error));
 
@@ -130,10 +135,8 @@ function searchValue(e) {
 							  
 							
 
-//vincent codepen force
+
 	});
 
 };
-
-
 

@@ -141,3 +141,10 @@ body {
 #stats{
   margin-left:20px; 
 }
+
+/* CIRCLE = BASKETBALLS */
+.basketballs {
+  fill: #ff9900;
+  stroke: #000000;
+  stroke-width: 1;
+}
