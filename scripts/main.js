@@ -8,6 +8,7 @@ import count from './count.js';
 console.log('Hello, world!');
 
 var playerImg = document.querySelector(".playerImg");
+var sqrtScale;
 
 
 //confirm code - fetch works
@@ -83,63 +84,55 @@ function searchValue(e) {
 		  .then(res => res.json())
 		  .then(data =>
 			  { 
-				//   const s20Avereges = data.data.map(item => {
-				// 	  let newItem2 = {
-				// 		  points: item["pts"],
-				// 		  steals: item["stl"],
-				// 		  blocks: item["blk"],
-				// 		  assists: item["ast"],
-				// 		  rebounds: item["reb"],
-				// 		  fga: item["fga"],
-				// 		  fgm: item["fgm"],
-				// 	  }
-				// 	  return newItem2
-				//   });
+				
+				const s20Averages = data.data.map(item => ({
+					points: item.pts,
+					steals: item.stl,
+					blocks: item.blk,
+					assists: item.ast,
+					rebounds: item.reb,
+					fga: item.fga,
+					fgm: item.fgm,
+				}));
+				console.log("data", s20Averages);
+
+				const numericValues = Object.values(s20Averages[0]);
+				console.log("numbers", numericValues);
+		
+				// Continue with the rest of your code using numericValues
+				const sqrtScale = d3.scaleSqrt()
+					.domain([0, d3.max(numericValues)])
+					.range([5, 30]);
+
+				var w = 500;
+				var h = 500;	
+		
+				const svg = d3.select("#stats")
+					.append("svg")
+					.attr("width", w)
+					.attr("height", h)
+					.selectAll("circle")
+					.data(numericValues)
+					.enter()
+					.append("g")
+					// translate moved een element van zijn positie ("translate(x,y)") 
+					// ${i * 50} - elk element in g wordt met een x 50 op de x-as verplaatst van index
+					// ${h / 2} - half van de totale hoogte van h voor alles in g (g als geheel)
+					.attr("transform", (d, i) => `translate(${i * 50},  ${h / 2})`)
+					.append("circle")
+					.attr("cx", 0)
+					.attr("cy", 0)
+					.attr("r", d => sqrtScale(d));
+			})
+			.catch(error => console.error("Error fetching data:", error));
 
 				
-					const s20Avereges = data.data.map(item => {
-						return {
-						points: item.pts,
-						steals: item.stl,
-						blocks: item.blk,
-						assists: item.ast,
-						rebounds: item.reb,
-						fga: item.fga,
-						fgm: item.fgm,
-						};
-					});
-  
-				  console.log("dataObject",s20Avereges[0]);
-
-				  var w = 500;
-				  var h = 500;
-
-
-				  const svg = d3.select("#stats")
-								.append("svg")
-								.attr("width", w)
-								.attr("height", h)
-								.selectAll("circle")
-								.data(s20Avereges)
-								.join("g")// maak groep 'g' aan voor de individuele circles
-								.selectAll("circle")
-								.data(d => {
-									console.log("Outer Data:", d);// normaal krijg ik een object met data terug
-									console.log("Inner Data:", Object.values(d)); // Use Object.values directly
-									return Object.values(d);//geef een array terug met daarin de data
-								})
-								.join("circle")//voor iedere value in de array een circle
-								.attr("cx", (d, i) => i * 30)
-								.attr("cy", (d, i) => i * 30 + 10)
-								.attr("r", 5);			
+							  
 							
 
 //vincent codepen force
-			  });
-
 	});
-	
-	
+
 };
 
 
