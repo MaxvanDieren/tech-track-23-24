@@ -31,6 +31,9 @@ document.querySelectorAll(".dropdwn-ct a").forEach(link => {
 	});
 });
 
+const seasonButton = document.getElementById("dropbutton");
+seasonButton.style.display = "none";
+
 //zoeken op enter https://stackoverflow.com/questions/14542062/eventlistener-enter-key
 button.addEventListener('click', searchValue);
 document.querySelector("#searchBar").addEventListener("keypress", function (e){
@@ -38,6 +41,11 @@ document.querySelector("#searchBar").addEventListener("keypress", function (e){
 		searchValue(e);
 	}
 });
+
+function showSeasonButton(){
+	seasonButton.style.display = "inline-block";
+}
+
 
 //speler data opzoeken(dit is wel heuidige data ~ veranderd nie met seizoen select)
 function searchValue(e) {
@@ -55,6 +63,7 @@ function searchValue(e) {
 				ID: item["id"],
 				position: item["position"],
 				team: item["team"]["full_name"],
+				weight: item["weight_pounds"]
 			}
 			return newItem
 		});
@@ -64,11 +73,18 @@ function searchValue(e) {
 		d3.select("#playerInfo h1") 
 		  .text(playa[0].name)
 		console.log(playa)
-		d3.select("#position")
-		  .text("Position: "+ playa[0].position)
+		d3.select("#seizoen")
+		  .text("Seizoen: "+ selectedSeason)
 		d3.select("#team")
-		  .text("Team: "+ playa[0].team);
-		  
+		  .text("Team: "+ playa[0].team)
+		d3.select("#position")
+		  .text("Positie: "+ playa[0].position)
+		d3.select("#weight")
+		  .text("Gewicht: "+ playa[0].weight+" lb");
+		
+		showSeasonButton();
+
+
 		d3.select("#stats").selectAll("*").remove();
 			//gebruik id van speler voor 2de fetch voor stats
 			//https://www.balldontlie.io/api/v1/season_averages?seasons[]=2018&seasons[]=2015&player_ids[]=237 goede fetch

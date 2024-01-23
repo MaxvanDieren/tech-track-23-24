@@ -12,23 +12,25 @@
     </header>
 
     <div class="area1">
-      <section class="dropdwn">
-        <button id="dropbutton" class="dropbtn">Welk seizoen?</button>
-        <div class="dropdwn-ct">
-          <a href="#" id="season2020">2020</a>
-          <a href="#" id="season2021">2021</a>
-          <a href="#" id="season2022">2022</a>
-          <a href="#" id="season2023">2023</a>
-        </div>
-      </section>
+      
       
       <section id="search">
-        <input 
+        <input
           type="text"
           name="searchBar"
           id="searchBar"
           placeholder="Zoek naar een speler!"
         />
+        <section class="dropdwn">
+          <button id="dropbutton" class="dropbtn">Seizoen: 2020</button>
+          <div class="dropdwn-ct">
+            <a href="#" id="season2020">2020</a>
+            <a href="#" id="season2021">2021</a>
+            <a href="#" id="season2022">2022</a>
+            <a href="#" id="season2023">2023</a>
+          </div>
+        </section>
+
         <button id="search_button">Search!</button>
       </section>
     </div>  
@@ -36,8 +38,11 @@
     <div class="area2">
       <section id="playerInfo">
         <h1></h1>
-        <p id="position"></p>
+        <p id="seizoen"></p>
         <p id="team"></p>
+        <p id="position"></p>
+        <p id="weight"></p>
+        
       </section>
 
       <section id="stats">

@@ -6,42 +6,10 @@ body {
   align-items: center;
   justify-content: space-evenly;
   flex-grow: 3;
-  min-height: 100vh;
+  max-height: 100vh;
   margin: 0;
+  padding-top: 5vh;
 }
-
-.area1{
-  
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-
-}
-
-.area1 .dropdwn{
-  padding: 10vw;
-}
-
-.area1 #search{
-  padding: 10vw;
-}
-
-.area2{
-  display: flex;
-  flex-direction: row;
-  flex-grow: 2;
-  justify-content: center;
-}
-
-.area2 #playerInfo{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  max-width: 25vw;
-}
-
 
 /* H1 NEON SIGN */
 .neon{
@@ -84,14 +52,85 @@ body {
 	}
 }
 
+/* PAGE STYLING */
+.area1{
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 
-/* DROPDOWN SEIZOEN SELECT */
-.dropbtn {
-  background-color: aqua;
+}
+
+.area1 .dropdwn{
+  padding: 2vw;
+}
+
+.area1 #search{
+  padding: 2vw;
+}
+
+.area1 #searchBar{
+  background-color: whitesmoke;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: rgba(0, 0, 0, 0.65);
+  border-style: solid;
+  
+  
+}
+
+.area1 #searchBar::placeholder{
+  color: grey;
+}
+
+.area1 #search_button{
+  background-color: rgb(214, 108, 31);
   color: whitesmoke;
   padding: 16px;
   font-size: 16px;
   border: none;
+  border: rgba(0, 0, 0, 0.65);
+  border-style: solid;
+}
+
+.area1 #search_button:hover{
+  background-color: rgb(202, 91, 12); 
+  border-style: inset;
+}
+
+.area2{
+  display: flex;
+  flex-direction: row;
+  flex-grow: 2;
+  justify-content: center;
+}
+
+.area2 #playerInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 25vw;
+  padding-left: 10vw;
+}
+
+.area2 #stats{
+  max-width: 75vw;
+  
+}
+
+
+
+/* DROPDOWN SEIZOEN SELECT */
+.dropbtn {
+  background-color: rgb(214, 108, 31);
+  color: whitesmoke;
+  padding: 16px;
+  font-size: 16px;
+  border: rgba(0, 0, 0, 0.65);
+  border-style: solid;
 }
 
 /* CONTAINER --> POSITIE DROPDOWN CONTENT */
@@ -127,7 +166,7 @@ body {
 */
 .dropdwn-ct a:hover {background-color: bisque;}
 .dropdwn:hover .dropdwn-ct {display: block;}
-.dropdwn:hover .dropbtn {background-color: cyan;}
+.dropdwn:hover .dropbtn {background-color:  rgb(202, 91, 12); border-style: inset;}
 
 
 /* PLAYER INFO & STATS */
