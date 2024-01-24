@@ -24,6 +24,7 @@ document.querySelectorAll(".dropdwn-ct a").forEach(link => {
 		e.preventDefault();
 		selectedSeason = this.id.replace("season", "")
 		console.log("Selected season:", selectedSeason);
+		searchValue(e);
 		
 		//https://www.shecodes.io/athena/6541-what-is-the-difference-between-double-quotes-and-backticks-in-javascript#:~:text=The%20difference%20between%20%22%20(double%20quotes,a%20template%20literal%20in%20JavaScript.
 		const seasonButton = document.getElementById("dropbutton");
